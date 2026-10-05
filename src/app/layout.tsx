@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
 import NavLinks from "../components/Navlinks";
+import NewsMarquee from "../components/NewsMarquee";
 
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body>
         <Header></Header>
         <NavLinks></NavLinks>
+        <NewsMarquee></NewsMarquee>
         {children}
       </body>
     </html>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Category = {
   slug: string;
   title: string;
@@ -29,6 +31,12 @@ const NavLinks = async () => {
   return (
     <nav className="border-t border-gray-100 bg-white">
       <div className="mx-auto flex max-w-7xl justify-center gap-6 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
+        <Link
+  href="/"
+  className="shrink-0 text-sm font-medium whitespace-nowrap text-gray-700 transition-colors hover:text-red-600"
+>
+  হোম
+</Link>
         {categories.map((category) => (
           <a
             key={category.slug}

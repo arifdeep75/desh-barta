@@ -1,10 +1,17 @@
 import Image from "next/image";
 
 const Header = () => {
+const currentDate = new Intl.DateTimeFormat("bn-BD", {
+  timeZone: "Asia/Dhaka",
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(new Date());
+
   return (
     <header className="border-b border-gray-200 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
-        
         {/* Logo */}
         <div className="flex items-center gap-2 sm:gap-3">
           <Image
@@ -21,7 +28,7 @@ const Header = () => {
             </h1>
 
             <p className="text-[10px] text-gray-500 sm:text-xs">
-              সত্যের সাথে প্রতিদিন
+              {currentDate}
             </p>
           </div>
         </div>
