@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import NavLinks from "../components/Navlinks";
 import NewsMarquee from "../components/NewsMarquee";
+import Footer from "../components/Footer";
 
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         <NavLinks></NavLinks>
         <NewsMarquee></NewsMarquee>
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );

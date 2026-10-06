@@ -1,45 +1,45 @@
 import Image from "next/image";
 
 const Header = () => {
-const currentDate = new Intl.DateTimeFormat("bn-BD", {
-  timeZone: "Asia/Dhaka",
-  weekday: "long",
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-}).format(new Date());
+  const currentDate = new Intl.DateTimeFormat("bn-BD", {
+    timeZone: "Asia/Dhaka",
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date());
 
   return (
     <header className="border-b border-gray-200 bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2.5 sm:px-5 sm:py-3">
         {/* Logo */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2">
           <Image
             src="/logo.webp"
             alt="দেশবার্তা"
-            width={50}
-            height={50}
-            className="h-10 w-10 object-contain sm:h-12 sm:w-12"
+            width={42}
+            height={42}
+            className="h-9 w-9 object-contain sm:h-10 sm:w-10"
           />
 
           <div>
-            <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">
+            <h1 className="text-lg font-bold leading-tight text-gray-900 sm:text-xl">
               দেশবার্তা
             </h1>
 
-            <p className="text-[10px] text-gray-500 sm:text-xs">
+            <p className="text-[9px] text-gray-500 sm:text-[10px]">
               {currentDate}
             </p>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <button className="rounded-full px-3 py-2 text-xs font-medium text-gray-700 transition hover:bg-gray-100 sm:px-4 sm:text-sm">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <button className="rounded-full px-2.5 py-1.5 text-[11px] font-medium text-gray-700 transition hover:bg-gray-100 sm:px-3 sm:text-xs">
             লগইন
           </button>
 
-          <button className="rounded-full bg-red-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-red-700 sm:px-5 sm:text-sm">
+          <button className="rounded-full bg-red-600 px-3 py-1.5 text-[11px] font-semibold text-white transition hover:bg-red-700 sm:px-4 sm:text-xs">
             রেজিস্টার
           </button>
         </div>
