@@ -1,7 +1,6 @@
+import HomeNews from "../components/HomeNews";
+
+
 export default function Home() {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <HomeNews></HomeNews>;
 }
