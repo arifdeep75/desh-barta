@@ -21,7 +21,7 @@ const NewsMarquee = async () => {
 
   const result = await response.json();
 
-  const news: News[] = result.data;
+  const news: News[] = result.data ?? [];
 
   return (
     <section className="border-b border-[#8B0000] bg-[#A50000] text-white">
@@ -34,28 +34,36 @@ const NewsMarquee = async () => {
         {/* Scrolling News */}
         <div className="min-w-0 flex-1 overflow-hidden">
           <div className="flex w-max animate-marquee items-center py-2.5">
-            {[...news, ...news].map((item, index) => (
-              <a
-                key={`${item.id}-${index}`}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex shrink-0 items-center text-xs font-medium transition-colors hover:text-yellow-200 sm:text-sm"
-              >
-                {item.isLive && (
-                  <span className="mr-2 font-bold text-yellow-300">
-                    লাইভ
+            {[...news, ...news].map((item, index) => {
+              const articleUrl = item.isLive
+                ? item.link
+                : `/article/${item.id}`;
+
+              return (
+                <a
+                  key={`${item.id}-${index}`}
+                  href={articleUrl}
+                  target={item.isLive ? "_blank" : undefined}
+                  rel={
+                    item.isLive ? "noopener noreferrer" : undefined
+                  }
+                  className="flex shrink-0 items-center text-xs font-medium transition-colors hover:text-yellow-200 sm:text-sm"
+                >
+                  {item.isLive && (
+                    <span className="mr-2 font-bold text-yellow-300">
+                      লাইভ
+                    </span>
+                  )}
+
+                  <span>{item.title}</span>
+
+                  {/* Separator */}
+                  <span className="mx-6 text-[#E88A8A] sm:mx-8">
+                    ●
                   </span>
-                )}
-
-                <span>{item.title}</span>
-
-                {/* Separator */}
-                <span className="mx-6 text-[#E88A8A] sm:mx-8">
-                  ●
-                </span>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

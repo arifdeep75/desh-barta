@@ -20,11 +20,6 @@ type NewsSection = {
   articles: Article[];
 };
 
-function getArticleUrl(link: string) {
-  const markdownMatch = link.match(/\]\((https?:\/\/[^)]+)\)/);
-
-  return markdownMatch ? markdownMatch[1] : link;
-}
 
 function NewsImage({
   article,
@@ -64,11 +59,7 @@ function NewsCard({
 }) {
   return (
     <article className="group overflow-hidden rounded-lg border border-gray-200 bg-white">
-      <a
-        href={getArticleUrl(article.link)}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={`/article/${article.id}`}>
         <NewsImage
           article={article}
           className="h-36 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02] sm:h-40"
@@ -115,9 +106,7 @@ function MostRead({ articles }: { articles: Article[] }) {
         {articles.map((article, index) => (
           <a
             key={article.id}
-            href={getArticleUrl(article.link)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/article/${article.id}`}
             className="flex gap-3 border-b border-gray-100 py-3 last:border-b-0"
           >
             <span className="min-w-4 text-xl font-medium text-red-600">
@@ -155,7 +144,7 @@ const HomeNews = async () => {
   const sections: NewsSection[] = sectionsResult.data ?? [];
   const mostRead: Article[] = mostReadResult.data ?? [];
 
-  /* ================= MAIN NEWS ================= */
+  // ================= MAIN NEWS =================
 
   const mainSection = sections.find(
     (section) => section.title === "প্রধান খবর"
@@ -164,9 +153,10 @@ const HomeNews = async () => {
   const mainArticles = mainSection?.articles ?? [];
 
   const mainNews = mainArticles[0];
+
   const sideNews = mainArticles.slice(1);
 
-  /* ================= FILTER UNWANTED CONTENT ================= */
+  // ================= FILTER UNWANTED CONTENT =================
 
   const excludedTitles = [
     "প্রধান খবর",
@@ -196,19 +186,20 @@ const HomeNews = async () => {
   return (
     <main className="mx-auto max-w-6xl px-3 py-4 sm:px-5 lg:px-6">
       <div className="grid items-start gap-5 lg:grid-cols-12">
+
         {/* ================= LEFT CONTENT ================= */}
 
         <div className="lg:col-span-8">
+
           {/* ================= MAIN NEWS ================= */}
 
           <section className="grid overflow-hidden rounded-lg border border-gray-200 bg-white lg:grid-cols-2">
+
             {/* BIG MAIN NEWS */}
 
             {mainNews && (
               <article className="border-b border-gray-200 lg:border-b-0 lg:border-r">
-                <a
-                  href={`/article/${mainNews.id}`}
-                >
+                <a href={`/article/${mainNews.id}`}>
                   <NewsImage
                     article={mainNews}
                     className="h-52 w-full object-cover sm:h-56"
@@ -239,9 +230,7 @@ const HomeNews = async () => {
               {sideNews.map((article, index) => (
                 <a
                   key={article.id}
-                  href={getArticleUrl(article.link)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/article/${article.id}`}
                   className={`block p-3.5 transition-colors hover:bg-gray-50 ${
                     index !== sideNews.length - 1
                       ? "border-b border-gray-200"
@@ -265,6 +254,7 @@ const HomeNews = async () => {
           <div className="mt-6 space-y-7">
             {otherSections.map((section) => (
               <section key={section.title}>
+
                 {/* SECTION TITLE */}
 
                 <div className="mb-3 flex items-center gap-3">
