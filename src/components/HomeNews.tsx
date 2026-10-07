@@ -207,9 +207,7 @@ const HomeNews = async () => {
             {mainNews && (
               <article className="border-b border-gray-200 lg:border-b-0 lg:border-r">
                 <a
-                  href={getArticleUrl(mainNews.link)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/article/${mainNews.id}`}
                 >
                   <NewsImage
                     article={mainNews}

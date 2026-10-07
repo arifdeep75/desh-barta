@@ -67,11 +67,9 @@ const CategoryPage = async ({
       {featuredNews && (
         <section className="mb-7 overflow-hidden rounded-lg border border-gray-200 bg-white">
           <a
-            href={featuredNews.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group grid lg:grid-cols-2"
-          >
+  href={`/article/${featuredNews.id}`}
+  className="group grid lg:grid-cols-2"
+>
             {/* Image */}
             {featuredNews.imageUrl ? (
               <Image
@@ -136,11 +134,7 @@ const CategoryPage = async ({
               key={article.id}
               className="group overflow-hidden rounded-lg border border-gray-200 bg-white"
             >
-              <a
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={`/article/${article.id}`}>
                 {article.imageUrl ? (
                   <Image
                     src={article.imageUrl}
